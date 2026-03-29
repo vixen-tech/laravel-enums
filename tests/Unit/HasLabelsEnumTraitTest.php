@@ -9,7 +9,7 @@ use Vixen\Enums\Tests\Samples\HasShortLabelsEnum;
 use Vixen\Enums\Tests\Samples\SingleCaseEnum;
 
 it('returns all labels', function () {
-    expect(HasLabelsEnum::labels())->toBe([
+    expect(HasLabelsEnum::labels()->toArray())->toBe([
         HasLabelsEnum::Diamond->value => 'Diamond Shape',
         HasLabelsEnum::Heart->value => 'Heart Shape',
         HasLabelsEnum::Pyramid->value => 'Pyramid Shape',
@@ -17,7 +17,7 @@ it('returns all labels', function () {
 });
 
 it('returns all long labels', function () {
-    expect(HasLongLabelsEnum::longLabels())->toBe([
+    expect(HasLongLabelsEnum::longLabels()->toArray())->toBe([
         HasLabelsEnum::Diamond->value => 'Diamond Shape',
         HasLabelsEnum::Heart->value => 'This is a heart shape',
         HasLabelsEnum::Pyramid->value => 'Pyramid',
@@ -25,7 +25,7 @@ it('returns all long labels', function () {
 });
 
 it('returns all short labels', function () {
-    expect(HasShortLabelsEnum::shortLabels())->toBe([
+    expect(HasShortLabelsEnum::shortLabels()->toArray())->toBe([
         HasLabelsEnum::Diamond->value => 'Diamond',
         HasLabelsEnum::Heart->value => 'HRT',
         HasLabelsEnum::Pyramid->value => 'PRM',
@@ -69,14 +69,14 @@ it('converts the label to title case', function () {
         ->and(HasConvertedLabelsEnum::RectangularShape->label())->toBe('Rectangular Shape');
 });
 
-it('returns empty arrays for an enum with no cases', function () {
-    expect(EmptyEnum::labels())->toBe([])
-        ->and(EmptyEnum::longLabels())->toBe([])
-        ->and(EmptyEnum::shortLabels())->toBe([]);
+it('returns empty collections for an enum with no cases', function () {
+    expect(EmptyEnum::labels()->toArray())->toBe([])
+        ->and(EmptyEnum::longLabels()->toArray())->toBe([])
+        ->and(EmptyEnum::shortLabels()->toArray())->toBe([]);
 });
 
 it('works with a single-case enum', function () {
-    expect(SingleCaseEnum::labels())->toBe(['only' => 'Only Option'])
+    expect(SingleCaseEnum::labels()->toArray())->toBe(['only' => 'Only Option'])
         ->and(SingleCaseEnum::Only->label())->toBe('Only Option');
 });
 

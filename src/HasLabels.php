@@ -6,21 +6,22 @@ use Vixen\Enums\Attributes\Label;
 use Vixen\Enums\Attributes\LongLabel;
 use Vixen\Enums\Attributes\ShortLabel;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 trait HasLabels
 {
-    final public static function labels(): array
+    final public static function labels(): Collection
     {
         return self::cachedLabels(Label::class);
     }
 
-    final public static function longLabels(): array
+    final public static function longLabels(): Collection
     {
         return self::cachedLabels(LongLabel::class);
     }
 
-    final public static function shortLabels(): array
+    final public static function shortLabels(): Collection
     {
         return self::cachedLabels(ShortLabel::class);
     }
@@ -113,10 +114,10 @@ trait HasLabels
     /**
      * @param  class-string  $type
      */
-    private static function cachedLabels(string $type): array
+    private static function cachedLabels(string $type): Collection
     {
         static $cache = [];
 
-        return $cache[$type] ??= self::buildLabels($type);
+        return $cache[$type] ??= collect(self::buildLabels($type));
     }
 }

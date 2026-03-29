@@ -10,7 +10,7 @@ it('returns a collection of labels and values', function () {
 });
 
 it('works alongside HasLabels without trait conflict', function () {
-    expect(HasOptionsEnum::labels())->toBe([
+    expect(HasOptionsEnum::labels()->toArray())->toBe([
         'square' => 'Square',
         'rect' => 'Rectangle',
     ])

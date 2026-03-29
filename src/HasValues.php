@@ -2,13 +2,12 @@
 
 namespace Vixen\Enums;
 
+use Illuminate\Support\Collection;
+
 trait HasValues
 {
-    /**
-     * @return array<int|string>
-     */
-    public static function values(): array
+    public static function values(): Collection
     {
-        return array_column(self::cases(), 'value');
+        return collect(array_column(self::cases(), 'value'));
     }
 }
