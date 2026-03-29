@@ -2,11 +2,11 @@
 
 namespace Vixen\Enums\Tests\Samples;
 
-use Vixen\Enums\Only;
+use Vixen\Enums\Filterable;
 
-enum OnlyEnum: string
+enum FilterableEnum: string
 {
-    use Only;
+    use Filterable;
 
     case NAME_1 = 'value_1';
     case NAME_2 = 'value_2';
