@@ -1,6 +1,6 @@
 <?php
 
-namespace ATStudio\Enums;
+namespace Vixen\Enums;
 
 use Illuminate\Support\Collection;
 

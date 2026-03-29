@@ -1,3 +1,3 @@
 <?php
 
-pest()->extend(ATStudio\Enums\Tests\TestCase::class)->in('Integration', 'Unit');
+pest()->extend(Vixen\Enums\Tests\TestCase::class)->in('Integration', 'Unit');

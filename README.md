@@ -13,7 +13,7 @@ Please see [CHANGELOG](CHANGELOG) for more information on what has changed recen
 Please see [CONTRIBUTING](CONTRIBUTING) for details.
 
 ## Credits
-- [Alex Torscho, ATStudio](https://atstudio.io)
+- [Alex Torscho](https://alextorscho.com)
 - All Contributors
 
 ## License

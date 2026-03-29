@@ -1,8 +1,8 @@
 <?php
 
-namespace ATStudio\Enums\Tests\Samples;
+namespace Vixen\Enums\Tests\Samples;
 
-use ATStudio\Enums\Snakeable;
+use Vixen\Enums\Snakeable;
 
 enum SnakeableEnum
 {

@@ -1,6 +1,6 @@
 <?php
 
-use ATStudio\Enums\Tests\Samples\SnakeableEnum;
+use Vixen\Enums\Tests\Samples\SnakeableEnum;
 
 it('converts enum case name to a snake case', function () {
     expect(SnakeableEnum::One->snake())->toBe('one')

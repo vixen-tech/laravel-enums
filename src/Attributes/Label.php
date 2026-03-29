@@ -1,6 +1,6 @@
 <?php
 
-namespace ATStudio\Enums\Attributes;
+namespace Vixen\Enums\Attributes;
 
 use Attribute;
 use Illuminate\Support\Facades\File;

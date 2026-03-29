@@ -1,10 +1,10 @@
 <?php
 
-use ATStudio\Enums\Tests\Samples\HasConvertedLabelsEnum;
-use ATStudio\Enums\Tests\Samples\HasLabelsEnum;
-use ATStudio\Enums\Tests\Samples\HasLabelsMissingAttributeEnum;
-use ATStudio\Enums\Tests\Samples\HasLongLabelsEnum;
-use ATStudio\Enums\Tests\Samples\HasShortLabelsEnum;
+use Vixen\Enums\Tests\Samples\HasConvertedLabelsEnum;
+use Vixen\Enums\Tests\Samples\HasLabelsEnum;
+use Vixen\Enums\Tests\Samples\HasLabelsMissingAttributeEnum;
+use Vixen\Enums\Tests\Samples\HasLongLabelsEnum;
+use Vixen\Enums\Tests\Samples\HasShortLabelsEnum;
 
 it('returns all labels', function () {
     expect(HasLabelsEnum::labels())->toBe([

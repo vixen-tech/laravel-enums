@@ -1,11 +1,11 @@
 <?php
 
-namespace ATStudio\Enums\Tests\Samples;
+namespace Vixen\Enums\Tests\Samples;
 
-use ATStudio\Enums\Attributes\Label;
-use ATStudio\Enums\Attributes\LongLabel;
-use ATStudio\Enums\Attributes\ShortLabel;
-use ATStudio\Enums\HasLabels;
+use Vixen\Enums\Attributes\Label;
+use Vixen\Enums\Attributes\LongLabel;
+use Vixen\Enums\Attributes\ShortLabel;
+use Vixen\Enums\HasLabels;
 
 enum HasLongLabelsEnum: int
 {

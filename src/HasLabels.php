@@ -1,10 +1,10 @@
 <?php
 
-namespace ATStudio\Enums;
+namespace Vixen\Enums;
 
-use ATStudio\Enums\Attributes\Label;
-use ATStudio\Enums\Attributes\LongLabel;
-use ATStudio\Enums\Attributes\ShortLabel;
+use Vixen\Enums\Attributes\Label;
+use Vixen\Enums\Attributes\LongLabel;
+use Vixen\Enums\Attributes\ShortLabel;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 

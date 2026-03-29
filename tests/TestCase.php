@@ -1,6 +1,6 @@
 <?php
 
-namespace ATStudio\Enums\Tests;
+namespace Vixen\Enums\Tests;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {

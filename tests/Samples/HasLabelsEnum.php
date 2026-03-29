@@ -1,9 +1,9 @@
 <?php
 
-namespace ATStudio\Enums\Tests\Samples;
+namespace Vixen\Enums\Tests\Samples;
 
-use ATStudio\Enums\Attributes\Label;
-use ATStudio\Enums\HasLabels;
+use Vixen\Enums\Attributes\Label;
+use Vixen\Enums\HasLabels;
 
 enum HasLabelsEnum: int
 {

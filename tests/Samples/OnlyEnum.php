@@ -1,8 +1,8 @@
 <?php
 
-namespace ATStudio\Enums\Tests\Samples;
+namespace Vixen\Enums\Tests\Samples;
 
-use ATStudio\Enums\Only;
+use Vixen\Enums\Only;
 
 enum OnlyEnum: string
 {
