@@ -1,10 +1,12 @@
 <?php
 
+use Vixen\Enums\Tests\Samples\EmptyEnum;
 use Vixen\Enums\Tests\Samples\HasConvertedLabelsEnum;
 use Vixen\Enums\Tests\Samples\HasLabelsEnum;
 use Vixen\Enums\Tests\Samples\HasLabelsMissingAttributeEnum;
 use Vixen\Enums\Tests\Samples\HasLongLabelsEnum;
 use Vixen\Enums\Tests\Samples\HasShortLabelsEnum;
+use Vixen\Enums\Tests\Samples\SingleCaseEnum;
 
 it('returns all labels', function () {
     expect(HasLabelsEnum::labels())->toBe([
@@ -65,4 +67,21 @@ it('falls back to the case name if label was not specified', function () {
 it('converts the label to title case', function () {
     expect(HasConvertedLabelsEnum::SquareShape->label())->toBe('Square Shape')
         ->and(HasConvertedLabelsEnum::RectangularShape->label())->toBe('Rectangular Shape');
+});
+
+it('returns empty arrays for an enum with no cases', function () {
+    expect(EmptyEnum::labels())->toBe([])
+        ->and(EmptyEnum::longLabels())->toBe([])
+        ->and(EmptyEnum::shortLabels())->toBe([]);
+});
+
+it('works with a single-case enum', function () {
+    expect(SingleCaseEnum::labels())->toBe(['only' => 'Only Option'])
+        ->and(SingleCaseEnum::Only->label())->toBe('Only Option');
+});
+
+it('returns the same result from label() and labels()[$value]', function () {
+    foreach (HasLabelsEnum::cases() as $case) {
+        expect($case->label())->toBe(HasLabelsEnum::labels()[$case->value]);
+    }
 });
