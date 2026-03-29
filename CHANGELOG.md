@@ -6,6 +6,7 @@ All notable changes to `laravel-enums` will be documented in this file.
 - Added `HasValues` trait
 - Added `HasDescriptions` trait
 - Added `except` to the `Filterable` trait
+- Added `only` parameter to `HasOptions` and `EnumCollection` methods
 - Reworked `EnumCollection`
 - Labels are now cached
 - All methods that return an array now return a collection

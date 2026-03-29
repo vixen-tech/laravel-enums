@@ -28,8 +28,8 @@ it('returns the same result from description() and descriptions()[$value]', func
     }
 });
 
-it('returns options with description', function () {
-    expect(HasDescriptionsEnum::optionsWithDescription()->toArray())->toBe([
+it('returns descriptive options', function () {
+    expect(HasDescriptionsEnum::descriptiveOptions()->toArray())->toBe([
         ['label' => 'Diamond', 'value' => 'diamond', 'description' => 'A precious stone of crystallized carbon'],
         ['label' => 'Heart', 'value' => 'heart', 'description' => 'A vital organ that pumps blood'],
         ['label' => 'Pyramid', 'value' => 'pyramid', 'description' => null],

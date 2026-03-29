@@ -10,32 +10,13 @@ trait HasOptions
 
     abstract public function description(): ?string;
 
-    final public static function options(): Collection
+    final public static function options(?array $only = null): Collection
     {
-        $options = collect();
-
-        foreach (self::cases() as $case) {
-            $options->push([
-                'label' => $case->label(),
-                'value' => $case->value,
-            ]);
-        }
-
-        return $options;
+        return (new EnumCollection(self::cases()))->toOptions(only: $only);
     }
 
-    final public static function optionsWithDescription(): Collection
+    final public static function descriptiveOptions(?array $only = null): Collection
     {
-        $options = collect();
-
-        foreach (self::cases() as $case) {
-            $options->push([
-                'label' => $case->label(),
-                'value' => $case->value,
-                'description' => $case->description(),
-            ]);
-        }
-
-        return $options;
+        return (new EnumCollection(self::cases()))->toDescriptiveOptions(only: $only);
     }
 }

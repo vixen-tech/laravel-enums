@@ -150,13 +150,35 @@ Status::options();
 //     ['label' => 'Rejected', 'value' => 'rejected'],
 // ]
 
-Status::optionsWithDescription();
+Status::descriptiveOptions();
 // [
 //     ['label' => 'Pending', 'value' => 'pending', 'description' => 'Items waiting to be reviewed by an administrator'],
 //     ['label' => 'Approved', 'value' => 'approved', 'description' => 'Items that have passed review'],
 //     ['label' => 'Rejected', 'value' => 'rejected', 'description' => null],
 // ]
 ```
+
+#### Customizing fields with `only`
+
+Both `options()` and `descriptiveOptions()` accept an optional `only` parameter to customize which fields appear in the returned arrays. The `value` field is always included.
+
+```php
+Status::options(only: ['shortLabel', 'description']);
+// [
+//     ['value' => 'pending', 'shortLabel' => 'PND', 'description' => 'Items waiting to be reviewed by an administrator'],
+//     ['value' => 'approved', 'shortLabel' => 'APR', 'description' => 'Items that have passed review'],
+//     ['value' => 'rejected', 'shortLabel' => 'REJ', 'description' => null],
+// ]
+
+// Use ['*'] to include all available fields
+Status::options(only: ['*']);
+// [
+//     ['value' => 'pending', 'name' => 'Pending', 'label' => 'Pending', 'shortLabel' => 'PND', 'longLabel' => 'Pending Review', 'description' => '...'],
+//     ...
+// ]
+```
+
+Available fields: `value`, `name`, `label`, `shortLabel`, `longLabel`, `description`. An `InvalidArgumentException` is thrown for fields that don't exist on the enum.
 
 ### HasValues
 
@@ -207,9 +229,16 @@ $collection->toDescriptiveOptions();
 //     ['label' => 'Approved', 'value' => 'approved', 'description' => 'Items that have passed review'],
 //     ['label' => 'Rejected', 'value' => 'rejected', 'description' => null],
 // ]
+
+// Customize fields with the only parameter
+$collection->toOptions(only: ['shortLabel', 'description']);
+// [
+//     ['value' => 'pending', 'shortLabel' => 'PND', 'description' => '...'],
+//     ...
+// ]
 ```
 
-`toOptions()` requires the enum to use `HasLabels`. `toDescriptiveOptions()` additionally requires `HasDescriptions`.
+`toOptions()` requires the enum to use `HasLabels`. `toDescriptiveOptions()` additionally requires `HasDescriptions`. Both methods accept an optional `only` parameter — see [HasOptions](#hasoptions) for details.
 
 Returned automatically by `Filterable::only()` and `Filterable::except()`.
 
