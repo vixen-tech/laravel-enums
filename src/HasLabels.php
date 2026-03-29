@@ -15,11 +15,6 @@ trait HasLabels
         return self::buildLabels(Label::class);
     }
 
-    final public static function collect(): EnumCollection
-    {
-        return new EnumCollection(self::labels());
-    }
-
     final public static function longLabels(): array
     {
         return self::buildLabels(LongLabel::class);

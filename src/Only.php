@@ -2,17 +2,19 @@
 
 namespace Vixen\Enums;
 
+use Illuminate\Support\Collection;
+
 trait Only
 {
     /**
      * @param array<string> $cases
      */
-    public static function only(array $cases): EnumCollection
+    public static function only(array $cases): Collection
     {
-        $values = new EnumCollection();
+        $values = collect();
 
         foreach ($cases as $case) {
-            $values[] = constant(self::class . '::' . $case);
+            $values->push(constant(self::class . '::' . $case));
         }
 
         return $values;
