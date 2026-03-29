@@ -52,18 +52,20 @@ trait HasLabels
      */
     private static function buildLabels(string $type): array
     {
+        $reflection = new \ReflectionEnum(self::class);
+
+        if (!$reflection->isBacked()) {
+            throw new \LogicException(sprintf(
+                'The HasLabels trait requires a backed enum, but %s is not backed.',
+                self::class,
+            ));
+        }
+
         $labels = [];
 
         foreach (self::cases() as $case) {
-            $reflect = new \ReflectionEnumBackedCase(self::class, $case->name);
+            $reflect = new \ReflectionEnumUnitCase(self::class, $case->name);
             $attrs = $reflect->getAttributes();
-
-            // Has no label attribute
-            if (empty($attrs)) {
-                $labels[$case->value] = __(Str::of($case->name)->snake()->replace('_', ' ')->apa()->value());
-
-                continue;
-            }
 
             $attr = self::extractCorrectAttribute($attrs, $type);
             $labels[$case->value] = $attr?->newInstance()->label()

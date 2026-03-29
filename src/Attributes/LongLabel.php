@@ -3,7 +3,6 @@
 namespace Vixen\Enums\Attributes;
 
 use Attribute;
-use Illuminate\Support\Facades\File;
 
 #[Attribute(Attribute::TARGET_CLASS_CONSTANT)]
 class LongLabel
@@ -12,8 +11,6 @@ class LongLabel
 
     public function label(): string
     {
-        return File::exists(lang_path(sprintf('%s/%s.php', app()->currentLocale(), strtolower($this->label))))
-            ? $this->label
-            : __($this->label);
+        return __($this->label);
     }
 }

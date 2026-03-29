@@ -14,6 +14,14 @@ trait Only
         $values = collect();
 
         foreach ($cases as $case) {
+            if (!defined(self::class . '::' . $case)) {
+                throw new \ValueError(sprintf(
+                    '"%s" is not a valid case for enum %s.',
+                    $case,
+                    self::class,
+                ));
+            }
+
             $values->push(constant(self::class . '::' . $case));
         }
 
