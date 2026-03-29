@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 trait HasOptions
 {
-    use HasLabels;
+    abstract public function label(): string;
 
     final public static function options(): Collection
     {
