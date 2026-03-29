@@ -8,6 +8,8 @@ trait HasOptions
 {
     abstract public function label(): string;
 
+    abstract public function description(): ?string;
+
     final public static function options(): Collection
     {
         $options = collect();
@@ -16,6 +18,21 @@ trait HasOptions
             $options->push([
                 'label' => $case->label(),
                 'value' => $case->value,
+            ]);
+        }
+
+        return $options;
+    }
+
+    final public static function optionsWithDescription(): Collection
+    {
+        $options = collect();
+
+        foreach (self::cases() as $case) {
+            $options->push([
+                'label' => $case->label(),
+                'value' => $case->value,
+                'description' => $case->description(),
             ]);
         }
 
