@@ -12,17 +12,17 @@ trait HasLabels
 {
     final public static function labels(): array
     {
-        return self::buildLabels(Label::class);
+        return self::cachedLabels(Label::class);
     }
 
     final public static function longLabels(): array
     {
-        return self::buildLabels(LongLabel::class);
+        return self::cachedLabels(LongLabel::class);
     }
 
     final public static function shortLabels(): array
     {
-        return self::buildLabels(ShortLabel::class);
+        return self::cachedLabels(ShortLabel::class);
     }
 
     final public function label(): string
@@ -108,5 +108,15 @@ trait HasLabels
         }
 
         return null;
+    }
+
+    /**
+     * @param  class-string  $type
+     */
+    private static function cachedLabels(string $type): array
+    {
+        static $cache = [];
+
+        return $cache[$type] ??= self::buildLabels($type);
     }
 }
