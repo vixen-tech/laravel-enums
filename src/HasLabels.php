@@ -81,12 +81,32 @@ trait HasLabels
      */
     private static function extractCorrectAttribute(array $attrs, string $type): ?\ReflectionAttribute
     {
-        $attr = Arr::first($attrs, fn ($attr) => $attr->getName() === $type);
+        $targetType = match ($type) {
+            LongLabel::class => 'long',
+            ShortLabel::class => 'short',
+            default => 'default',
+        };
 
-        if (!$attr) {
-            return Arr::first($attrs, fn ($attr) => $attr->getName() === Label::class);
+        if ($type !== Label::class) {
+            $attr = Arr::first($attrs, fn ($attr) => $attr->getName() === $type);
+
+            if ($attr) {
+                return $attr;
+            }
         }
 
-        return $attr;
+        $labelAttr = Arr::first($attrs, fn ($attr) => $attr->getName() === Label::class);
+
+        if (!$labelAttr) {
+            return null;
+        }
+
+        $labelType = $labelAttr->newInstance()->type();
+
+        if ($labelType === $targetType || $labelType === 'default') {
+            return $labelAttr;
+        }
+
+        return null;
     }
 }

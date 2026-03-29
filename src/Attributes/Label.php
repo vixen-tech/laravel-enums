@@ -7,10 +7,20 @@ use Attribute;
 #[Attribute(Attribute::TARGET_CLASS_CONSTANT)]
 class Label
 {
-    public function __construct(private readonly string $label) {}
+    /** @param 'default'|'long'|'short' $type */
+    public function __construct(
+        protected readonly string $label,
+        private readonly string $type = 'default',
+    ) {}
 
     public function label(): string
     {
         return __($this->label);
+    }
+
+    /** @internal */
+    public function type(): string
+    {
+        return $this->type;
     }
 }

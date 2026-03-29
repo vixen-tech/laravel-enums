@@ -5,12 +5,10 @@ namespace Vixen\Enums\Attributes;
 use Attribute;
 
 #[Attribute(Attribute::TARGET_CLASS_CONSTANT)]
-class LongLabel
+class LongLabel extends Label
 {
-    public function __construct(private readonly string $label) {}
-
-    public function label(): string
+    public function __construct(string $label)
     {
-        return __($this->label);
+        parent::__construct($label, type: 'long');
     }
 }
